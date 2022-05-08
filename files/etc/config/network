@@ -1,0 +1,30 @@
+
+config interface 'loopback'
+	option ifname 'lo'
+	option proto 'static'
+	option ipaddr '127.0.0.1'
+	option netmask '255.0.0.0'
+
+config globals 'globals'
+	option packet_steering '1'
+
+config interface 'lan'
+	option type 'bridge'
+	option ifname 'eth0'
+	option proto 'static'
+	option ipaddr '192.168.3.111'
+	option netmask '255.255.255.0'
+	option ip6assign '60'
+	option gateway '192.168.3.1'
+	option dns '192.168.3.111 114.114.114.114 223.5.5.5'
+
+config interface 'docker'
+	option ifname 'docker0'
+	option proto 'none'
+	option auto '0'
+
+config device 'docker0'
+	option type 'bridge'
+	option name 'docker0'
+	list ifname 'docker0'
+
